@@ -6,9 +6,10 @@ export default function Carousel() {
       id="carouselExampleFade"
       className="carousel slide carousel-fade"
       data-bs-ride="carousel"
+      style={{ objectFit: "contain !important" }}
     >
       <div className="carousel-inner" id="carousel">
-        <div className="carousel-caption">
+        <div className="carousel-caption" style={{ zIndex: "10" }}>
           <form className="d-flex">
             <input
               className="form-control me-2"
@@ -16,7 +17,10 @@ export default function Carousel() {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button
+              className="btn btn-outline-success text-white bg-success"
+              type="submit"
+            >
               Search
             </button>
           </form>
@@ -25,6 +29,7 @@ export default function Carousel() {
           <img
             src="/images/slide1.jpg"
             className="d-block w-100"
+            style={{ filter: "brightness(30%)" }}
             alt="Slide 1"
           />
         </div>
@@ -32,6 +37,7 @@ export default function Carousel() {
           <img
             src="/images/slide2.jpg"
             className="d-block w-100"
+            style={{ filter: "brightness(30%)" }}
             alt="Slide 2"
           />
         </div>
@@ -39,6 +45,7 @@ export default function Carousel() {
           <img
             src="/images/slide3.jpeg"
             className="d-block w-100"
+            style={{ filter: "brightness(30%)" }}
             alt="Slide 3"
           />
         </div>
