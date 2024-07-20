@@ -1,0 +1,31 @@
+const express = require("express");
+const router = express.Router();
+const User = require("../models/User");
+const { body, validationResult } = require("express-validator");
+
+router.post(
+  "/createuser",
+  body("email").isEmail(),
+  body("name").isLength({ min: 5 }),
+  body("password", "Incorrect password").isLength({ min: 5 }),
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+      await User.create({
+        name: req.body.name,
+        password: req.body.password,
+        email: req.body.email,
+        location: req.body.location, // Corrected the typo here
+      });
+      res.json({ success: true });
+    } catch (error) {
+      console.error("Error creating user:", error);
+      res.status(500).json({ success: false, error: error.message });
+    }
+  }
+);
+
+module.exports = router;
